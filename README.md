@@ -5,7 +5,7 @@
 - Kubernetes Overview
 - Containers - Docker
 - Container Orchestration?
-- Kubernetes Concepts - [PODs](/PODS.md) | ReplicaSets | Deployment | Services
+- Kubernetes Concepts - [PODs](/pods/README.md) | ReplicaSets | Deployment | Services
 - Networking in Kubernetes
 - Kubernetes Management - Kubectl
 - Kubernetes Definition Files - YAML
@@ -128,4 +128,44 @@ The kubetl is a utilites known as the kube command line tool or kubtectl or kube
 - The kubectl get pods command is used to get the pod deployment info.
   
   `kubectl get pods`
+
+## Kubernetes Concepts - [PODs](/pods/README.md) | ReplicaSets | Deployment | Services
+
+### YAML in kubernetes
+
+Kubernetes uses Yaml file as inputs for the creation of objects such as POD's, replicas, deployment services, etc. All of these follow similar structure kubernetes definition file always contains 4 top levels fields:
+
+- `apiVersion` is the version of kubernetes API used to create the objects. Depending on what we are trying to create we must use the right API version. It is of type string.
+- `kind` refers to the type of object we are trying to create. It is of type string.
+- `metadata` is data about the object like its name, labels etc. It is of type dictonary. Metadata properties are fixed. However, under labels you can have custom properties.
+- `spec` is the actuall configuration of the kind such as containers(list)
+
+> These are the top level or root level properties.
+> These are also required fields in the configuration file.
+
+  | Kind       | Version |
+  | ---------- |:-------:|
+  | POD        | v1      |
+  | Service    | v1      |
+  | ReplicaSet | apps/v1 |
+  | Deployment | apps/v1 |
+  
+
+**pod-definition.yaml**
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-app
+  labels:
+      app: app
+      type: frontend
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+```
+
+Run command `kubectl create -f pod-definition.yaml` to create a pod.
 

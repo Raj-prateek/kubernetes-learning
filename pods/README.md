@@ -37,7 +37,7 @@ Let us create nginx pod `kubectl run nginx --image=nginx`
 
   ```
     NAME    READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
-  nginx   1/1     Running   0          43m   172.17.0.3   minikube   <none>           <none>
+    nginx   1/1     Running   0          43m   172.17.0.3   minikube   <none>           <none>
   ```
 
 - To get pod full information use:
@@ -97,3 +97,84 @@ Let us create nginx pod `kubectl run nginx --image=nginx`
 References:
 
 [Kubernetes Pods](https://kubernetes.io/docs/concepts/workloads/pods/)
+
+## PODs with YAML
+
+[**pod-definition.yaml**](/pod-definition.yaml)
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-app
+  labels:
+      app: app
+      type: frontend
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+```
+
+Run command `kubectl create -f pod-definition.yaml` to create a pod.
+
+```
+kubectl get pods
+
+NAME           READY   STATUS    RESTARTS   AGE
+frontend-app   1/1     Running   0          16s
+```
+
+```
+kubectl describe pod frontend-app
+
+Name:         frontend-app
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.64.2
+Start Time:   Fri, 09 Jul 2021 00:23:01 +0530
+Labels:       app=app
+              type=frontend
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.4
+IPs:
+  IP:  172.17.0.4
+Containers:
+  nginx-container:
+    Container ID:   docker://fc70a4816ed9774a2b9109debe6f9912c0b0f10e801ee65dce64676b8cbf4c62
+    Image:          nginx
+    Image ID:       docker-pullable://nginx@sha256:3ca76089b14cf7db77cc5d4f3e9c9eb73768b9c85a0eabde1046435a6aa41c06
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Fri, 09 Jul 2021 00:23:06 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-r74kz (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  default-token-r74kz:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-r74kz
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  3m46s  default-scheduler  Successfully assigned default/frontend-app to minikube
+  Normal  Pulling    3m46s  kubelet            Pulling image "nginx"
+  Normal  Pulled     3m42s  kubelet            Successfully pulled image "nginx" in 3.480545408s
+  Normal  Created    3m42s  kubelet            Created container nginx-container
+  Normal  Started    3m42s  kubelet            Started container nginx-container
+```
