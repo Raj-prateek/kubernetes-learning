@@ -5,7 +5,7 @@
 - Kubernetes Overview
 - Containers - Docker
 - Container Orchestration?
-- Kubernetes Concepts - PODs | ReplicaSets | Deployment | Services
+- Kubernetes Concepts - [PODs](/PODS.md) | ReplicaSets | Deployment | Services
 - Networking in Kubernetes
 - Kubernetes Management - Kubectl
 - Kubernetes Definition Files - YAML
@@ -109,4 +109,23 @@ The kubetl is a utilites known as the kube command line tool or kubtectl or kube
 - The kubectl get nodes command is used to list all the nodes part of the cluster.
 
   `kubectl get nodes`
+- The kubectl get deployment command is used to list all the deployments.
+
+  `kubectl get deployment`
+
+- The kubectl expose deployment command is used to deploy the service on the cluster.
+  
+  `kubectl expose deployment balanced --type=LoadBalancer --port=8080`
+
+- The kubectl delete services command is used to delete the service on the cluster.
+  
+  `kubectl delete services balanced`
+
+- The kubectl delete deployment command is used to delete the deployment on the cluster.
+  
+  `kubectl delete deployment balanced`
+
+- The kubectl get pods command is used to get the pod deployment info.
+  
+  `kubectl get pods`
 
