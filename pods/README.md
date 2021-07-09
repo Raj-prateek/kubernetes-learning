@@ -94,6 +94,15 @@ Let us create nginx pod `kubectl run nginx --image=nginx`
     Normal  Started    9s    kubelet            Started container nginx
   ```
 
+- To edit pod configurations
+  `kubectl edit pod podname`
+
+- To edit pod configurations using custom file and apply.
+  `kubectl apply -f file.yaml`
+
+- To write the pod configurations using run command.
+  `kubectl run redis --image=redis123 --dry-run=client -o yaml > pod.yaml`
+
 References:
 
 [Kubernetes Pods](https://kubernetes.io/docs/concepts/workloads/pods/)
@@ -178,3 +187,4 @@ Events:
   Normal  Created    3m42s  kubelet            Created container nginx-container
   Normal  Started    3m42s  kubelet            Started container nginx-container
 ```
+

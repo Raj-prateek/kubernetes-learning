@@ -5,7 +5,7 @@
 - Kubernetes Overview
 - Containers - Docker
 - Container Orchestration?
-- Kubernetes Concepts - [PODs](/pods/README.md) | ReplicaSets | Deployment | Services
+- Kubernetes Concepts - [PODs](/pods/README.md) | ReplicaSets | Deployment | Services | Controllers
 - Networking in Kubernetes
 - Kubernetes Management - Kubectl
 - Kubernetes Definition Files - YAML
@@ -129,7 +129,7 @@ The kubetl is a utilites known as the kube command line tool or kubtectl or kube
   
   `kubectl get pods`
 
-## Kubernetes Concepts - [PODs](/pods/README.md) | ReplicaSets | Deployment | Services
+## Kubernetes Concepts - [PODs](/pods/README.md) | ReplicaSets | Deployment | Services | Controllers
 
 ### YAML in kubernetes
 
@@ -169,3 +169,7 @@ spec:
 
 Run command `kubectl create -f pod-definition.yaml` to create a pod.
 
+### Controllers
+
+- Controllers are the brain behined the kubernetes cluster.
+- They are the process which monitor kubernetes objects and respond accordingly.
