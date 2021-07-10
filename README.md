@@ -5,10 +5,8 @@
 - Kubernetes Overview
 - Containers - Docker
 - Container Orchestration?
-- Kubernetes Concepts - [PODs](/pods/README.md) | ReplicaSets | Deployment | Services | Controllers
-- Networking in Kubernetes
-- Kubernetes Management - Kubectl
-- Kubernetes Definition Files - YAML
+- Kubernetes Concepts - [PODs](/pods/README.md) | [Deployment](/deployment) | [Services](/services) | [ReplicaSets Controllers](/replicasets-controllers)
+- [Networking in Kubernetes](/networking)
 - Kubernetes on Cloud - AWS/GCP
 
 ## Kubernetes Overview
